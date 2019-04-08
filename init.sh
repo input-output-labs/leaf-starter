@@ -55,25 +55,32 @@ cp _npmrc front-end/.npmrc
 
 replace_in_file front-end/pom.xml '\[\[artifactId\]\]' $1
 replace_in_file front-end/package.json 'ngleaf-app' $1'-app'
+sed -i 's/ngleaf\/webapp/'$1'\/webapp/g' front-end/package.json
+replace_in_file front-end/angular.json 'ngleaf-app' $1'-app'
 replace_in_file front-end/src/index.html 'NgleafApp' $1
+
+cd front-end
+npm install --package-lock-only --no-package-lock @iolabs/ngleaf
+cd ..
 
 echo '********* Copying back-end *********'
 
 copy_back
 
 replace_in_file back-end/pom.xml 'leaf-demo' $1
-replace_in_file back-end/pom.xml 'leaf-demo' $1
+replace_in_file back-end/pom.xml 'ngleaf-app' $1'-app'
 replace_in_file back-end/src/main/resources/application.properties 'leafdemo' $1
 
 echo '********* Testing installation *********'
-# mvn install
+mvn install
 
 echo
 echo
 echo
 echo
-echo "Please add @iolabs/ngleaf dependeny manually to front-end/package.json then run mvn install here"
-
-# rm -r tmp
-
-
+echo "Setup Completed"
+echo "Run the app with \"java -jar back-end/target/"$1"-0.0.10-SNAPSHOT.jar\""
+echo
+echo
+echo
+echo "First launch may failed. Try it twice (#AY method):)"
