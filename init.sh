@@ -60,7 +60,7 @@ replace_in_file front-end/angular.json 'ngleaf-app' $1'-app'
 replace_in_file front-end/src/index.html 'NgleafApp' $1
 
 cd front-end
-npm install @iolabs/ngleaf
+npm install @iolabs/ngleaf --save
 cd ..
 
 echo '********* Copying back-end *********'
