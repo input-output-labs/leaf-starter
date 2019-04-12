@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ARG JAR_FILE
-COPY back-end/target/[[artifactId]]-1.0.0-SNAPSHOT.jar app.jar
+COPY back-end/target/[[artifactId]]-*-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-Dspring.data.mongodb.uri=mongodb://mongo/[[artifactId]]", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
