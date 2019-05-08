@@ -58,6 +58,7 @@ replace_in_file front-end/package.json 'ngleaf-app' $1'-app'
 sed -i 's/ngleaf\/webapp/'$1'\/webapp/g' front-end/package.json
 replace_in_file front-end/angular.json 'ngleaf-app' $1'-app'
 replace_in_file front-end/src/index.html 'NgleafApp' $1
+replace_in_file front-end/src/environments/environment.prod.ts 'leafdemo' $1
 
 cd front-end
 npm install @iolabs/ngleaf --save --force
