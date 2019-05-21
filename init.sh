@@ -70,7 +70,6 @@ copy_back
 
 replace_in_file back-end/pom.xml 'leaf-demo' $1
 replace_in_file back-end/pom.xml 'ngleaf-app' $1'-app'
-replace_in_file back-end/src/main/resources/application.properties 'leafdemo' $1
 
 echo '********* Testing installation *********'
 mvn install

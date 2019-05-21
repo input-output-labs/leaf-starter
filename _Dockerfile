@@ -1,5 +1,10 @@
-FROM openjdk:8-jdk-alpine
+FROM digitalmagic/docker-java-nginx
 VOLUME /tmp
+RUN rm -v /etc/nginx/nginx.conf
+ADD nginx.conf /etc/nginx/
 ARG JAR_FILE
 COPY back-end/target/[[artifactId]]-*-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java", "-Dspring.data.mongodb.uri=mongodb://mongo/[[artifactId]]", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+COPY front-end/dist/[[artifactId]]-app/* /var/www/html/
+
+ENTRYPOINT sh -c 'service nginx start && java -Dspring.data.mongodb.uri=mongodb://mongo/[[artifactId]] -jar /app.jar'
+
