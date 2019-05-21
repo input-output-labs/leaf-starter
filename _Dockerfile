@@ -1,5 +1,6 @@
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
+RUN /bin/sh -c "apk update"
 RUN /bin/sh -c "apk add nginx"
 RUN /bin/sh -c "adduser -D -g 'www' www"
 RUN /bin/sh -c "mkdir /www"
