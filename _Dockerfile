@@ -5,6 +5,7 @@ RUN /bin/sh -c "apk add nginx"
 RUN /bin/sh -c "adduser -D -g 'www' www"
 RUN /bin/sh -c "mkdir /www"
 RUN /bin/sh -c "chown -R www:www /var/lib/nginx"
+RUN /bin/sh -c "chown -R www:www /var/tmp/nginx"
 RUN /bin/sh -c "chown -R www:www /www"
 RUN rm -v /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/
