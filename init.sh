@@ -5,8 +5,8 @@ function clone_repos () {
 
 	cd tmp
 
-	git clone git@github.com:input-output-labs/leaf.git
-	git clone git@github.com:input-output-labs/ngleaf.git
+	git clone https://mcouste:8f4d598797d685195e3faf5ae7aee632bda3181f @github.com/input-output-labs/leaf.git
+	git clone https://mcouste:8f4d598797d685195e3faf5ae7aee632bda3181f @github.com/input-output-labs/ngleaf.git
 
 	cd ..
 }
