@@ -61,7 +61,7 @@ replace_in_file front-end/src/index.html 'NgleafApp' $1
 replace_in_file front-end/src/environments/environment.prod.ts 'leafdemo' $1
 
 cd front-end
-npm install @iolabs/ngleaf --save --force
+npm install @input-output-labs/ngleaf --save --force
 cd ..
 
 echo '********* Copying back-end *********'
