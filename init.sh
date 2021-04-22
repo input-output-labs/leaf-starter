@@ -79,8 +79,5 @@ echo
 echo
 echo
 echo "Setup Completed"
-echo "Run the app with \"java -jar back-end/target/"$1"-0.0.10-SNAPSHOT.jar\""
-echo
-echo
-echo
-echo "First launch may failed. Try it twice (#AY method):)"
+echo "Run the app with \"./script/startAll.sh\""
+
