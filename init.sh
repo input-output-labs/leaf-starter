@@ -51,6 +51,7 @@ echo '********* Copying front-end *********'
 copy_front
 
 cp _pom_frontend.xml front-end/pom.xml
+cp _gitignore_frontend front-end/.gitignore
 cp _npmrc front-end/.npmrc
 
 replace_in_file front-end/pom.xml '\[\[artifactId\]\]' $1
@@ -67,6 +68,8 @@ cd ..
 echo '********* Copying back-end *********'
 
 copy_back
+
+cp .gitignore back-end/.gitignore
 
 replace_in_file back-end/pom.xml 'leaf-demo' $1
 replace_in_file back-end/pom.xml 'ngleaf-app' $1'-app'
