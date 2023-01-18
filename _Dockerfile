@@ -11,7 +11,7 @@ RUN rm -v /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/
 ARG JAR_FILE
 COPY back-end/target/[[artifactId]]-*-SNAPSHOT.jar app.jar
-COPY front-end/dist/[[artifactId]]-app/* /www/
+COPY front-end/dist/[[artifactId]]-app/ /www/
 
-ENTRYPOINT sh -c "nginx -g 'pid /tmp/nginx.pid;' && java -Dspring.data.mongodb.uri=mongodb://mongo/[[artifactId]] -jar /app.jar"
+ENTRYPOINT sh -c "nginx -g 'pid /tmp/nginx.pid;' && java -Dspring.data.mongodb.uri=${MONGODB_URI} -jar /app.jar"
 
