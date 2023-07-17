@@ -26,7 +26,11 @@ jobs:
           chmod +x dockerize.sh
           ./dockerize.sh
           docker save -o save.artifact iolabs/blank
-      - name: Publish
-        run: |
-          curl -X POST https://io-labs.fr/release-deploy/api/projects/5caf6b8023a8461c7f0300bc/versions?privatetoken=V5Yx-SbyRMn9ZVDpjS6d --data-binary "@save.artifact" -H "Content-Type: application/json"
-          curl -X POST https://io-labs.fr/release-deploy/api/projects/5caf6b8023a8461c7f0300bc/actions/deploy?label=latest\&privatetoken=V5Yx-SbyRMn9ZVDpjS6d -H "Content-Type: application/json"
+      - name: Build and push docker package
+        uses: docker/build-push-action@v1
+        with:
+          username: 'mathiascouste'
+          password: 'b60bd5f0391c420bcffb4fcf3aed59fc73dc569c'
+          registry: docker.pkg.github.com
+          repository: input-output-labs/iolabs/blank
+          tag_with_ref: true
