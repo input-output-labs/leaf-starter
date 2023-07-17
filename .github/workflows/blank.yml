@@ -23,6 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          registry-url: https://npm.pkg.github.com/
       - run: ./init.sh blank
       - name: Dockerize
         run: |
