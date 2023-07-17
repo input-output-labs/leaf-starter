@@ -28,6 +28,11 @@ jobs:
           echo "@input-output-labs:registry=https://npm.pkg.github.com" > _npmrc
           echo "registry=https://registry.npmjs.org/" >> _npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_NPM_AUTH_TOKEN }}" >> _npmrc
+      - name: Setting maven settings
+        uses: s4u/maven-settings-action@v2
+        with:
+          servers: '[{"id": "github", "username": "mathiascouste", "password": "${{ secrets.GITHUB_TOKEN }}"}]'
+          githubServer: false
       - run: ./init.sh blank
       - name: Dockerize
         run: |
