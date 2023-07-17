@@ -31,9 +31,11 @@ jobs:
       - name: Setting maven settings
         uses: s4u/maven-settings-action@v2
         with:
-          servers: '[{"id": "github", "username": "mathiascouste", "password": "${{ secrets.GITHUB_TOKEN }}"}]'
+          servers: '[{"id": "github", "username": "mathiascouste", "password": "${{ secrets.GH_PAT_FOR_ACTIONS_TOKEN }}"}]'
           githubServer: false
       - run: ./init.sh blank
+        env:
+          GITHUB_TOKEN_REF: ${{ secrets.GITHUB_TOKEN }}
       - name: Dockerize
         run: |
           chmod +x dockerize.sh
